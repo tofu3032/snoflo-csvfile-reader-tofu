@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class BookDataGenerator {
 
-    private final String CSV_FILE = "library-management/src/csv/library.csv";
+    private final String CSV_FILE = "src/library.csv";
 
     private final Random random;
 
