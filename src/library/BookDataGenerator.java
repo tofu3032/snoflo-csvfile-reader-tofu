@@ -17,12 +17,14 @@ public class BookDataGenerator {
     private final String[] LAST_NAMES = { "진우", "종철", "승현", "가영", "나영", "다영", "영호", "철수", "미진", "영수", "훈영", "선영", "태연",
             "설화" };
 
+    public static int count;
+
     public BookDataGenerator() throws IOException {
         this.random = new Random();
-        generateCSV(CSV_FILE);
+        generateCSV(CSV_FILE, count);
     }
 
-    public void generateCSV(String filename) throws IOException {
+    /* public void generateCSV(String filename) throws IOException {
         int count = 10000000;
 
         if (!isCSVExists(filename)) {
@@ -32,7 +34,7 @@ public class BookDataGenerator {
             System.out.println("이미 CSV파일이 생성되었습니다.");
         }
 
-    }
+    } */
 
     private String generateRandomAuthor() {
         String firstName = FIRST_NAMES[random.nextInt(FIRST_NAMES.length)];
@@ -41,20 +43,26 @@ public class BookDataGenerator {
     }
 
     private void generateCSV(String filename, int count) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-            // FileWriter writer = new FileWriter(filename);
-            writer.write("ISBN, Title, Author, Year\n");
 
-            for (int i = 0; i < count; i++) {
-                String isbn = UUID.randomUUID().toString().substring(0, 13);
-                String title = "Book" + random.nextInt(count);
-                String author = generateRandomAuthor();
-                int year = 1950 + random.nextInt(74);
-                writer.write(String.format("%s,%s,%s,%d\n", isbn, title, author, year));
+        if (!isCSVExists(filename)) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+                // FileWriter writer = new FileWriter(filename);
+                writer.write("ISBN, Title, Author, Year\n");
+
+                for (int i = 0; i < count; i++) {
+                    String isbn = UUID.randomUUID().toString().substring(0, 13);
+                    String title = "Book" + random.nextInt(count);
+                    String author = generateRandomAuthor();
+                    int year = 1950 + random.nextInt(74);
+                    writer.write(String.format("%s,%s,%s,%d\n", isbn, title, author, year));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            System.out.println("파일이 이미 존재합니다.");
         }
+
     }
 
     private boolean isCSVExists(String filePath) {
@@ -62,9 +70,30 @@ public class BookDataGenerator {
         return file.exists() && file.isFile();
     }
 
-	public String getCsvFile() {
+	public String getCSV_FILE() {
 		return CSV_FILE;
 	}
 
+	public Random getRandom() {
+		return random;
+	}
+
+	public String[] getFIRST_NAMES() {
+		return FIRST_NAMES;
+	}
+
+	public String[] getLAST_NAMES() {
+		return LAST_NAMES;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+    
 
 }

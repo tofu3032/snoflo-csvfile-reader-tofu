@@ -1,11 +1,13 @@
 package csv;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CsvUtils {
 
-    private CsvUtils() {}
+    private CsvUtils() {
+    }
 
     public static List<String[]> readCsv(String filename) throws IOException {
 
@@ -22,6 +24,7 @@ public class CsvUtils {
     }
 
     public static void writeCsv(String filename, List<String[]> data) throws IOException {
+
         try (FileWriter writer = new FileWriter(filename)) {
             for (String[] row : data) {
                 writer.write(String.join(",", row) + "\n");

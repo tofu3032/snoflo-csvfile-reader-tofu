@@ -2,9 +2,7 @@ package library;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-
 import csv.CsvUtils;
 import model.Book;
 
@@ -29,7 +27,7 @@ public class LibraryService {
     }
 
     private void loadData() throws IOException {
-        this.data = CsvUtils.readCsv(bookDataGenerator.getCsvFile());
+        this.data = CsvUtils.readCsv(bookDataGenerator.getCSV_FILE());
         // this.bookList =
         // data.stream().skip(1).map(this::createBookFromRow).collect(Collectors.toList());
         this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
@@ -43,4 +41,5 @@ public class LibraryService {
         return new Book(row[0], row[1], row[2], Integer.parseInt(row[3]));
     }
 
+    
 }

@@ -5,7 +5,7 @@ import csv.CsvUtils;
 import model.Book;
 
 public class MemoryUsageTest {
-    private static final String CSV_FILE = "path/to/your/csv/file.csv";
+    private static final String CSV_FILE = "src/library.csv";
     private static final Runtime runtime = Runtime.getRuntime();
 
     // 인스턴스 변수로 data를 선언한 LibraryService
