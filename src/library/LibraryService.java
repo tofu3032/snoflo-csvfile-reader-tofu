@@ -14,22 +14,13 @@ public class LibraryService {
 
     private List<String[]> data;
 
-/*     public LibraryService(BookDataGenerator bookDataGenerator) throws IOException {
-        this.bookDataGenerator = bookDataGenerator;
-        loadData();
-    } */
-
     public LibraryService(BookDataGenerator bookDataGenerator) throws IOException {
         this.bookDataGenerator = bookDataGenerator;
         loadData();
-        // this.data = CsvUtils.readCsv(bookDataGenerator.getCsvFile());
-        // this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
     }
 
     private void loadData() throws IOException {
         this.data = CsvUtils.readCsv(bookDataGenerator.getCSV_FILE());
-        // this.bookList =
-        // data.stream().skip(1).map(this::createBookFromRow).collect(Collectors.toList());
         this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
     }
 

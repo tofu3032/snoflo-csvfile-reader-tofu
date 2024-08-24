@@ -23,16 +23,11 @@ public class App {
             bookDataGenerator.generateCSV(row);
             LibraryService libraryService = new LibraryService(bookDataGenerator);
         
-            // File file = new File("src/library.csv");
-            // file.setReadOnly();
             System.out.println("-----------------------------");
 
-            // List<String[]> data = Arrays.asList(new String[]{"dbwlsdn","ddd"}, new String[]{"유진우", "dddd"});
-            // CsvUtils.writeCsv("src/library.csv", data);
 
             long beforeTime = System.currentTimeMillis();
             List<Book> bookListByAuthor = libraryService.findBookByAuthor("강진우");
-            // System.out.println("bookListByAuthor : " + bookListByAuthor);
             System.out.println("size : " + bookListByAuthor.size());
             long afterTime = System.currentTimeMillis();
 
