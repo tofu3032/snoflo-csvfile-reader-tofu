@@ -17,36 +17,25 @@ public class BookDataGenerator {
     private final String[] LAST_NAMES = { "진우", "종철", "승현", "가영", "나영", "다영", "영호", "철수", "미진", "영수", "훈영", "선영", "태연",
             "설화" };
 
-    public static int count;
-
-    public BookDataGenerator() throws IOException {
+    public BookDataGenerator() {
         this.random = new Random();
-        generateCSV(CSV_FILE, count);
     }
 
-    /* public void generateCSV(String filename) throws IOException {
-        int count = 10000000;
+    public void generateCSV(int row) throws IOException {
 
-        if (!isCSVExists(filename)) {
+        if (!isCSVExists(CSV_FILE)) {
             System.out.println("파일을 생성하였습니다.");
-            generateCSV(filename, count);
+            createCSVFile(CSV_FILE, row);
         } else {
             System.out.println("이미 CSV파일이 생성되었습니다.");
         }
 
-    } */
-
-    private String generateRandomAuthor() {
-        String firstName = FIRST_NAMES[random.nextInt(FIRST_NAMES.length)];
-        String lastName = LAST_NAMES[random.nextInt(LAST_NAMES.length)];
-        return firstName + lastName;
     }
 
-    private void generateCSV(String filename, int count) throws IOException {
+    private void createCSVFile(String filename, int count) throws IOException {
 
         if (!isCSVExists(filename)) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-                // FileWriter writer = new FileWriter(filename);
                 writer.write("ISBN, Title, Author, Year\n");
 
                 for (int i = 0; i < count; i++) {
@@ -65,35 +54,31 @@ public class BookDataGenerator {
 
     }
 
+    private String generateRandomAuthor() {
+        String firstName = FIRST_NAMES[random.nextInt(FIRST_NAMES.length)];
+        String lastName = LAST_NAMES[random.nextInt(LAST_NAMES.length)];
+        return firstName + lastName;
+    }
+
     private boolean isCSVExists(String filePath) {
         File file = new File(filePath);
         return file.exists() && file.isFile();
     }
 
-	public String getCSV_FILE() {
-		return CSV_FILE;
-	}
+    public String getCSV_FILE() {
+        return CSV_FILE;
+    }
 
-	public Random getRandom() {
-		return random;
-	}
+    public Random getRandom() {
+        return random;
+    }
 
-	public String[] getFIRST_NAMES() {
-		return FIRST_NAMES;
-	}
+    public String[] getFIRST_NAMES() {
+        return FIRST_NAMES;
+    }
 
-	public String[] getLAST_NAMES() {
-		return LAST_NAMES;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
-    
+    public String[] getLAST_NAMES() {
+        return LAST_NAMES;
+    }
 
 }

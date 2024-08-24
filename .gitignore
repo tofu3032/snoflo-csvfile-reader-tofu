@@ -3,3 +3,6 @@ csv/
 !src/csv
 memo/
 practice/
+.idea/
+library-management.iml
+out/
