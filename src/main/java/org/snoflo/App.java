@@ -1,14 +1,15 @@
-import java.io.File;
+package org.snoflo;
+
 import java.io.IOException;
+
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import csv.CsvUtils;
-import library.BookDataGenerator;
-import library.LibraryService;
-import model.Book;
+import org.snoflo.library.BookDataGenerator;
+import org.snoflo.library.LibraryService;
+import org.snoflo.model.Book;
+
 
 public class App {
 
@@ -22,9 +23,8 @@ public class App {
             BookDataGenerator bookDataGenerator = new BookDataGenerator();
             bookDataGenerator.generateCSV(row);
             LibraryService libraryService = new LibraryService(bookDataGenerator);
-        
-            System.out.println("-----------------------------");
 
+            System.out.println("-----------------------------");
 
             long beforeTime = System.currentTimeMillis();
             List<Book> bookListByAuthor = libraryService.findBookByAuthor("강진우");

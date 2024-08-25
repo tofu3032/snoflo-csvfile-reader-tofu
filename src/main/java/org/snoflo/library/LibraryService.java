@@ -1,10 +1,11 @@
-package library;
+package org.snoflo.library;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
-import csv.CsvUtils;
-import model.Book;
+
+import org.snoflo.csv.CsvUtils;
+import org.snoflo.model.Book;
 
 public class LibraryService {
 

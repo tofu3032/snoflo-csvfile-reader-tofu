@@ -1,4 +1,5 @@
-package model;
+package org.snoflo.model;
+
 public class Book {
     
     private String isbn;

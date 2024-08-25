@@ -1,4 +1,4 @@
-package library;
+package org.snoflo.library;
 
 import java.io.BufferedWriter;
 import java.io.File;

@@ -1,4 +1,4 @@
-package csv;
+package org.snoflo.csv;
 
 import java.io.*;
 import java.util.ArrayList;
