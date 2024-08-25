@@ -15,7 +15,9 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
+        System.out.println("------------------------------------");
         System.out.println("도서관리 프로그램 시작");
+        System.out.println("------------------------------------");
         System.out.println("row를 입력하세요.");
         try (Scanner scanner = new Scanner(System.in)) {
             int row = scanner.nextInt();

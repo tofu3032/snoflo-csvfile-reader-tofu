@@ -20,9 +20,10 @@ public class LibraryService {
         loadData();
     }
 
-    private void loadData() throws IOException {
+    private int loadData() throws IOException {
         this.data = CsvUtils.readCsv(bookDataGenerator.getCSV_FILE());
         this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
+        return 1;
     }
 
     public List<Book> findBookByAuthor(String author) {

@@ -34,3 +34,11 @@ application {
     // Define the main class for the application.
     mainClass = 'org.snoflo.App'
 }
+
+jar {
+    manifest {
+	attributes (
+	    'Main-Class' : 'org.snoflo.App'
+	)
+    }
+}

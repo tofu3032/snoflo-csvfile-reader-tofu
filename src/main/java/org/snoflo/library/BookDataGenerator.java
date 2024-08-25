@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class BookDataGenerator {
 
-    private final String CSV_FILE = "src/library.csv";
+    private final String CSV_FILE = "library.csv";
 
     private final Random random;
 
@@ -20,7 +20,7 @@ public class BookDataGenerator {
     public BookDataGenerator() {
         this.random = new Random();
     }
-
+/* 
     public void generateCSV(int row) throws IOException {
 
         if (!isCSVExists(CSV_FILE)) {
@@ -30,9 +30,21 @@ public class BookDataGenerator {
             System.out.println("이미 CSV파일이 생성되었습니다.");
         }
 
+    } */
+
+    public int generateCSV(int row) throws IOException {
+
+        if (!isCSVExists(CSV_FILE)) {
+            System.out.println("파일을 생성하였습니다.");
+            createCSVFile(CSV_FILE, row);
+            return 1;
+        } else {
+            System.out.println("이미 CSV파일이 생성되었습니다.");
+            return 0;
+        }
     }
 
-    private void createCSVFile(String filename, int count) throws IOException {
+    private int createCSVFile(String filename, int count) throws IOException {
 
         if (!isCSVExists(filename)) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
@@ -45,11 +57,11 @@ public class BookDataGenerator {
                     int year = 1950 + random.nextInt(74);
                     writer.write(String.format("%s,%s,%s,%d\n", isbn, title, author, year));
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            } 
+            return 1;
         } else {
             System.out.println("파일이 이미 존재합니다.");
+            return 0;
         }
 
     }
@@ -67,18 +79,6 @@ public class BookDataGenerator {
 
     public String getCSV_FILE() {
         return CSV_FILE;
-    }
-
-    public Random getRandom() {
-        return random;
-    }
-
-    public String[] getFIRST_NAMES() {
-        return FIRST_NAMES;
-    }
-
-    public String[] getLAST_NAMES() {
-        return LAST_NAMES;
     }
 
 }
