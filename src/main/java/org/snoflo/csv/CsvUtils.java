@@ -6,6 +6,8 @@ import java.util.List;
 
 public class CsvUtils {
 
+    private static final String CSV_FILE = "library.csv";
+
     private CsvUtils() {
     }
 
@@ -31,4 +33,10 @@ public class CsvUtils {
             }
         }
     }
+
+	public static String getCSV_FILE() {
+		return CSV_FILE;
+	}
+
+    
 }

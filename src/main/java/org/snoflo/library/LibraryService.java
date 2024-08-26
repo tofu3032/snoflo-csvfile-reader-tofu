@@ -1,6 +1,8 @@
 package org.snoflo.library;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,19 +11,20 @@ import org.snoflo.model.Book;
 
 public class LibraryService {
 
-    private BookDataGenerator bookDataGenerator;
-
-    private List<Book> bookList;
-
     private List<String[]> data;
+    private List<Book> bookList;
+    
 
-    public LibraryService(BookDataGenerator bookDataGenerator) throws IOException {
-        this.bookDataGenerator = bookDataGenerator;
+
+    public LibraryService() throws IOException {
         loadData();
     }
 
     private void loadData() throws IOException {
-        this.data = CsvUtils.readCsv(bookDataGenerator.getCSV_FILE());
+        Path rootDir = Paths.get("").toAbsolutePath();
+        Path csvFile = rootDir.resolve("library.csv");
+
+        this.data = CsvUtils.readCsv(CsvUtils.getCSV_FILE());
         this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
     }
 

@@ -51,9 +51,9 @@ public class App {
             }
 
             bookDataGenerator = new BookDataGenerator();
-            bookDataGenerator.generateCSV(row);
+            bookDataGenerator.createCSVFile();
 
-            libraryService = new LibraryService(bookDataGenerator);
+            libraryService = new LibraryService();
 
             System.out.println("-----------------------------");
             System.out.println("---- Author로 검색하기 -----");

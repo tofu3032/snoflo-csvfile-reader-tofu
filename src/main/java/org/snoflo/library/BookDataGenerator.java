@@ -7,26 +7,20 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.UUID;
 
-public class BookDataGenerator {
+public class BookDataGenerator implements Generator {
 
     private final Random random;
-
-    private final String[] FIRST_NAMES = { "유", "김", "이", "박", "최", "나", "강", "국" };
-    private final String[] LAST_NAMES = { "진우", "종철", "승현", "가영", "나영", "다영", "영호", "철수", "미진", "영수", "훈영", "선영", "태연",
-            "설화" };
 
     public BookDataGenerator() {
         this.random = new Random();
     }
 
-    public void generateCSV() throws IOException {
-        createCSVFile();
-    }
-
-    private void createCSVFile() throws IOException {
+    @Override
+    public boolean createCSVFile() throws IOException {
         String fileName = "library.csv";
         int row = 100;
-
+        boolean isCreated = true;
+        
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write("ISBN, Title, Author, Year\n");
 
@@ -38,14 +32,16 @@ public class BookDataGenerator {
                 writer.write(String.format("%s,%s,%s,%d\n", isbn, title, author, year));
             }
         }
-
+        return isCreated;
     }
 
     private String generateRandomAuthor() {
+        String[] FIRST_NAMES = { "유", "김", "이", "박", "최", "나", "강", "국" };
+        String[] LAST_NAMES = { "진우", "종철", "승현", "가영", "나영", "다영", "영호", "철수", "미진", "영수", "훈영", "선영", "태연", "설화"};
+
         String firstName = FIRST_NAMES[random.nextInt(FIRST_NAMES.length)];
         String lastName = LAST_NAMES[random.nextInt(LAST_NAMES.length)];
         return firstName + lastName;
     }
-
 
 }
