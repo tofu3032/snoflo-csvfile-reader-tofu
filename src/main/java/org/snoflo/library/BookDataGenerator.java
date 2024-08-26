@@ -9,8 +9,6 @@ import java.util.UUID;
 
 public class BookDataGenerator {
 
-    private final String CSV_FILE = "library.csv";
-
     private final Random random;
 
     private final String[] FIRST_NAMES = { "유", "김", "이", "박", "최", "나", "강", "국" };
@@ -20,48 +18,25 @@ public class BookDataGenerator {
     public BookDataGenerator() {
         this.random = new Random();
     }
-/* 
-    public void generateCSV(int row) throws IOException {
 
-        if (!isCSVExists(CSV_FILE)) {
-            System.out.println("파일을 생성하였습니다.");
-            createCSVFile(CSV_FILE, row);
-        } else {
-            System.out.println("이미 CSV파일이 생성되었습니다.");
-        }
-
-    } */
-
-    public int generateCSV(int row) throws IOException {
-
-        if (!isCSVExists(CSV_FILE)) {
-            System.out.println("파일을 생성하였습니다.");
-            createCSVFile(CSV_FILE, row);
-            return 1;
-        } else {
-            System.out.println("이미 CSV파일이 생성되었습니다.");
-            return 0;
-        }
+    public void generateCSV() throws IOException {
+        createCSVFile();
     }
 
-    private int createCSVFile(String filename, int count) throws IOException {
+    private void createCSVFile() throws IOException {
+        String fileName = "library.csv";
+        int row = 100;
 
-        if (!isCSVExists(filename)) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
-                writer.write("ISBN, Title, Author, Year\n");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            writer.write("ISBN, Title, Author, Year\n");
 
-                for (int i = 0; i < count; i++) {
-                    String isbn = UUID.randomUUID().toString().substring(0, 13);
-                    String title = "Book" + random.nextInt(count);
-                    String author = generateRandomAuthor();
-                    int year = 1950 + random.nextInt(74);
-                    writer.write(String.format("%s,%s,%s,%d\n", isbn, title, author, year));
-                }
-            } 
-            return 1;
-        } else {
-            System.out.println("파일이 이미 존재합니다.");
-            return 0;
+            for (int i = 0; i < row; i++) {
+                String isbn = UUID.randomUUID().toString().substring(0, 13);
+                String title = "Book" + random.nextInt(row);
+                String author = generateRandomAuthor();
+                int year = 1950 + random.nextInt(74);
+                writer.write(String.format("%s,%s,%s,%d\n", isbn, title, author, year));
+            }
         }
 
     }
@@ -72,13 +47,5 @@ public class BookDataGenerator {
         return firstName + lastName;
     }
 
-    private boolean isCSVExists(String filePath) {
-        File file = new File(filePath);
-        return file.exists() && file.isFile();
-    }
-
-    public String getCSV_FILE() {
-        return CSV_FILE;
-    }
 
 }
