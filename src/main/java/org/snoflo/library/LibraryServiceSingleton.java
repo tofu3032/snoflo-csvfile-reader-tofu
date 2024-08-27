@@ -7,15 +7,23 @@ import java.util.stream.Collectors;
 import org.snoflo.csv.LibraryCsvFileManager;
 import org.snoflo.model.Book;
 
-
-public class LibraryService {
+public class LibraryServiceSingleton {
 
     private List<String[]> data;
     private List<Book> bookList;
-    
-    public LibraryService() throws IOException {
-        this.data = LibraryCsvFileManager.readCsvFile();
+
+    private static LibraryServiceSingleton instance;
+
+    public LibraryServiceSingleton() throws IOException {
+        this.data = LibraryCsvFileManager.readCsv();
         this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
+    }
+
+    public static synchronized LibraryServiceSingleton getInstance() throws IOException {
+        if (instance == null) {
+            instance = new LibraryServiceSingleton();
+        }
+        return instance;
     }
 
     public List<Book> findBookByAuthor(String author) {

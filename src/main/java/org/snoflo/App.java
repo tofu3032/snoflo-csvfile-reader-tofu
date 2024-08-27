@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Scanner;
 
-import org.snoflo.library.BookDataGenerator;
+import org.snoflo.csv.LibraryCsvFileGenerator;
 import org.snoflo.library.LibraryService;
 import org.snoflo.model.Book;
 
@@ -20,7 +20,7 @@ public class App {
         System.out.println("도서관리 프로그램 시작");
         System.out.println("---------------------------------");
 
-        BookDataGenerator bookDataGenerator = null;
+        LibraryCsvFileGenerator bookDataGenerator = null;
         LibraryService libraryService = null;
         int row = -1;
 
@@ -50,8 +50,7 @@ public class App {
                 }
             }
 
-            bookDataGenerator = new BookDataGenerator();
-            bookDataGenerator.createCSVFile();
+            bookDataGenerator = new LibraryCsvFileGenerator();
 
             libraryService = new LibraryService();
 

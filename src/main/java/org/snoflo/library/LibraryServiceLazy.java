@@ -7,18 +7,20 @@ import java.util.stream.Collectors;
 import org.snoflo.csv.LibraryCsvFileManager;
 import org.snoflo.model.Book;
 
-
-public class LibraryService {
+public class LibraryServiceLazy {
 
     private List<String[]> data;
     private List<Book> bookList;
-    
-    public LibraryService() throws IOException {
-        this.data = LibraryCsvFileManager.readCsvFile();
-        this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
+
+    public LibraryServiceLazy() throws IOException {
     }
 
-    public List<Book> findBookByAuthor(String author) {
+    public List<Book> findBookByAuthor(String author) throws IOException {
+        if (bookList == null) {
+            this.data = LibraryCsvFileManager.readCsvFile();
+            this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
+        }
+
         return bookList.stream().filter(book -> book.getAuthor().equals(author)).collect(Collectors.toList());
     }
 
