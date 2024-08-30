@@ -1,4 +1,4 @@
-package org.snoflo.library;
+package org.snoflo.service;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,8 +13,8 @@ public class LibraryService {
     private List<String[]> data;
     private List<Book> bookList;
     private CsvFileManager csvFileManager;
-
     private static LibraryService instance;
+
 
     public LibraryService () {
         try {
@@ -33,8 +33,13 @@ public class LibraryService {
     }
 
     private void initialize() throws IOException {
+        String fileName = "";
+        int row = -1;
+
         this.csvFileManager = new LibraryCsvFileManager();
+
         csvFileManager.generateCsvFile();
+       
         if (bookList == null) {
             this.data = csvFileManager.readCsvFile();
             this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());

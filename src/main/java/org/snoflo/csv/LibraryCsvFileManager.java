@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class LibraryCsvFileManager extends CsvFileCommonField implements CsvFileManager {
+public class LibraryCsvFileManager extends AbstractCsvFileManager implements CsvFileManager {
 
     public LibraryCsvFileManager() {
         super("library.csv", 100);
@@ -54,12 +54,20 @@ public class LibraryCsvFileManager extends CsvFileCommonField implements CsvFile
     }
 
     private String generateRandomAuthor() {
-        String[] FIRST_NAMES = { "유", "김", "이", "박", "최", "나", "강", "국" };
-        String[] LAST_NAMES = { "진우", "종철", "승현", "가영", "나영", "다영", "영호", "철수", "미진", "영수", "훈영", "선영", "태연", "설화" };
+        /*
+         * String[] FIRST_NAMES = { "유", "김", "이", "박", "최", "나", "강", "국" };
+         * String[] LAST_NAMES = { "진우", "종철", "승현", "가영", "나영", "다영", "영호", "철수", "미진",
+         * "영수", "훈영", "선영", "태연", "설화" };
+         */
+
+        String[] FIRST_NAMES = { "John", "Michael", "James", "David", "Robert", "Emily", "Emma", "Olivia", "Sophia",
+                "Isabella", "Daniel", "Matthew", "Ava", "Charlotte" };
+        String[] LAST_NAMES = { "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis",
+                "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson" };
 
         String firstName = FIRST_NAMES[random.nextInt(FIRST_NAMES.length)];
         String lastName = LAST_NAMES[random.nextInt(LAST_NAMES.length)];
-        return firstName + lastName;
+        return firstName + " " + lastName;
     }
 
 }
