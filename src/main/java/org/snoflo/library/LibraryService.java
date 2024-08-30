@@ -34,15 +34,11 @@ public class LibraryService {
 
     private void initialize() throws IOException {
         this.csvFileManager = new LibraryCsvFileManager();
-        generateLibraryCsvFile();
+        csvFileManager.generateCsvFile();
         if (bookList == null) {
             this.data = csvFileManager.readCsvFile();
             this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
         }
-    }
-
-    private void generateLibraryCsvFile() throws IOException {
-        csvFileManager.generateCsvFile();
     }
 
     public List<Book> findBookByAuthor(String author) {
