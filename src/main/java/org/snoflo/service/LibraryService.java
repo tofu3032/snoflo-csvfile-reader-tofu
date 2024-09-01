@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.snoflo.csv.CsvFileGenerator;
 import org.snoflo.csv.CsvFileManager;
-import org.snoflo.csv.LibraryCsvFileManager;
+import org.snoflo.csv.CsvFileReader;
+import org.snoflo.csv.CsvFileWriter;
 import org.snoflo.model.Book;
 
 public class LibraryService {
@@ -13,10 +15,13 @@ public class LibraryService {
     private List<String[]> data;
     private List<Book> bookList;
     private CsvFileManager csvFileManager;
+    private CsvFileReader csvFileReader;
+    private CsvFileWriter csvFileWriter;
+    private CsvFileGenerator csvFileGenerator;
     private static LibraryService instance;
 
 
-    public LibraryService () {
+    public LibraryService() {
         try {
 			initialize();
 		} catch (IOException e) {
@@ -33,15 +38,18 @@ public class LibraryService {
     }
 
     private void initialize() throws IOException {
-        String fileName = "";
-        int row = -1;
 
-        this.csvFileManager = new LibraryCsvFileManager();
+        String fileName = "library.csv";
+        int fileRow = 100;
 
-        csvFileManager.generateCsvFile();
+        // this.csvFileManager = new CsvFileManager(fileName, fileRow);
+        this.csvFileGenerator = new CsvFileManager(fileName, fileRow);
+        this.csvFileReader = new CsvFileManager(fileName, fileRow);
+
+        csvFileGenerator.generateCsvFile();
        
         if (bookList == null) {
-            this.data = csvFileManager.readCsvFile();
+            this.data = csvFileReader.readCsvFile();
             this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
         }
     }

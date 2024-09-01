@@ -17,15 +17,10 @@ public class Application {
         }
         return instance;
     }
+
     public void start() {
-        showMainDisplay();
-        appController.executeFindByAuthor();
+        appController.executeMainMenu();
     }
 
-    private void showMainDisplay() {
-        System.out.println("---------------------------------");
-        System.out.println("도서관리 프로그램 시작");
-        System.out.println("---------------------------------");
-    }
 
 }

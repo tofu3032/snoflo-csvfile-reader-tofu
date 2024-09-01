@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class LibraryCsvFileManager extends AbstractCsvFileManager implements CsvFileManager {
+public class LibraryCsvFileManager extends AbstractCsvFileManager implements CsvFileReader, CsvFileWriter, CsvFileGenerator {
 
-    public LibraryCsvFileManager() {
-        super("library.csv", 100);
+    public CsvFileManager(String csvFile, int row) {
+        super(csvFile, row);
     }
 
     @Override

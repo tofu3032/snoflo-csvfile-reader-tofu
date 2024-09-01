@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
-import org.snoflo.memo.CsvFilePathProvider;
+import org.snoflo.utils.CsvFilePathProvider;
 
 public abstract class AbstractCsvFileManager {
 
