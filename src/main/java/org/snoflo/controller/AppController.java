@@ -24,33 +24,16 @@ public class AppController {
     public void executeMainMenu () {
         viewService.showMainDisplay();
         viewService.showSelectDisplay();
-        // viewService.showSelectDisplayIfFileNotExist();
-        
-        
-        /* 
+        int number = scanner.nextInt();
 
-         * 첫 시작시 파일 생성 메뉴 강제
-         * 
-         * switch () {
-         * 
-         * select 1 -> 파일 생성
-         * select 2 -> 
-         * }
-         */
-    }
-
-    public void selectMenu() {
-        viewService.showMainDisplay();
-        int menuButton = scanner.nextInt();
-
-        if (menuButton == 1) {
-        } else if (menuButton == 2) {
-
+        if (number == 1) {
+            executeFindByAuthor();
         }
     }
 
     public void executeFindByAuthor() {
         viewService.showMenuFindByAuthor();
+        scanner.nextLine();
         String name = scanner.nextLine();
         List<Book> bookListByAuthor = libraryService.findBookByAuthor(name);
         viewService.showResultFindByAuthor(bookListByAuthor);

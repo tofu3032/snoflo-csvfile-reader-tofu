@@ -9,14 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class LibraryCsvFileManager extends AbstractCsvFileManager implements CsvFileReader, CsvFileWriter, CsvFileGenerator {
+public class LibraryCsvFileManager extends AbstractCsvFileManager {
 
-    public CsvFileManager(String csvFile, int row) {
+    public LibraryCsvFileManager(String csvFile, int row) {
         super(csvFile, row);
     }
 
     @Override
     public void generateCsvFile() throws IOException {
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFile))) {
             writer.write("ISBN, Title, Author, Year\n");
 

@@ -20,9 +20,23 @@ public abstract class AbstractCsvFileManager {
         this.random = new Random();
     }
 
-    abstract void generateCsvFile() throws IOException;
+    abstract public void generateCsvFile() throws IOException;
 
-    abstract List<String[]> readCsvFile() throws IOException;
+    abstract public List<String[]> readCsvFile() throws IOException;
 
-    abstract void writeCsvFile(List<String[]> data) throws IOException;
+    abstract public void writeCsvFile(List<String[]> data) throws IOException;
+
+    public void setCsvFile(String csvFile) {
+        this.csvFile = csvFile;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    
 }
