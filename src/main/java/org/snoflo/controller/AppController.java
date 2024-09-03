@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.snoflo.model.Book;
+import org.snoflo.proxy.LibraryServiceProxy;
 import org.snoflo.service.LibraryService;
+import org.snoflo.service.LibraryServiceImpl;
 import org.snoflo.service.ViewService;
 
 public class AppController {
@@ -13,11 +15,14 @@ public class AppController {
 
     private LibraryService libraryService;
 
+    private LibraryService proxyLibraryService;
+
     private Scanner scanner;
 
     public AppController () {
         this.viewService = new ViewService();
-        this.libraryService = LibraryService.getInstance();
+        this.libraryService = LibraryServiceImpl.getInstance();
+        this.proxyLibraryService = (LibraryService) LibraryServiceProxy.newProxyInstance(libraryService);
         this.scanner = new Scanner(System.in);
     }
 
@@ -35,7 +40,7 @@ public class AppController {
         viewService.showMenuFindByAuthor();
         scanner.nextLine();
         String name = scanner.nextLine();
-        List<Book> bookListByAuthor = libraryService.findBookByAuthor(name);
+        List<Book> bookListByAuthor = proxyLibraryService.findBookByAuthor(name);
         viewService.showResultFindByAuthor(bookListByAuthor);
     }
 

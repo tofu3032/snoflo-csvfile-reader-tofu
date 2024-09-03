@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.snoflo.model.Book;
-import org.snoflo.service.LibraryService;
+import org.snoflo.service.LibraryServiceImpl;
 
 public class App {
 
@@ -16,7 +16,7 @@ public class App {
         System.out.println("도서관리 프로그램 시작");
         System.out.println("---------------------------------");
 
-        LibraryService libraryService = new LibraryService();
+        LibraryServiceImpl libraryService = new LibraryServiceImpl();
 
         try (Scanner scanner = new Scanner(System.in)) {
 
