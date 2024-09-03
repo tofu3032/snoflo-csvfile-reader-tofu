@@ -7,7 +7,7 @@ public class Application {
     private AppController appController;
     private static Application instance;
 
-    public Application() {
+    private Application() {
         this.appController = new AppController();
     }
 

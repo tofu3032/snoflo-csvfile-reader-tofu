@@ -14,10 +14,12 @@ public class LibraryServiceProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println("메서드 : " + method.getName() + "시작");
         long beforeTime = System.currentTimeMillis();
         Object result = method.invoke(target, args);
         long afterTime = System.currentTimeMillis();
-        double secDiffTime = afterTime - beforeTime / 1000.0;
+        double secDiffTime = (afterTime - beforeTime) / 1000.0;
+        System.out.println("메서드 : " + method.getName() + "종료");
         System.out.println("측정 시간 : " + secDiffTime);
         return result;
     }

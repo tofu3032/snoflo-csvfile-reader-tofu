@@ -12,7 +12,7 @@ public class LibraryServiceImpl implements LibraryService {
     private LibraryDataConverter libraryDataConverter;
     private static LibraryServiceImpl instance;
 
-    public LibraryServiceImpl() {
+    private LibraryServiceImpl() {
         this.libraryDataConverter = new LibraryDataConverter(new LibraryCsvFileManager("library.csv", 100));
     }
 
