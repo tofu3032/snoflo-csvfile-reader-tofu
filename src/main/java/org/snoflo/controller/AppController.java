@@ -15,14 +15,11 @@ public class AppController {
 
     private LibraryService libraryService;
 
-    private LibraryService proxyLibraryService;
-
     private Scanner scanner;
 
     public AppController () {
         this.viewService = new ViewService();
         this.libraryService = LibraryServiceImpl.getInstance();
-        this.proxyLibraryService = (LibraryService) LibraryServiceProxy.newProxyInstance(libraryService);
         this.scanner = new Scanner(System.in);
     }
 
@@ -40,7 +37,7 @@ public class AppController {
         viewService.showMenuFindByAuthor();
         scanner.nextLine();
         String name = scanner.nextLine();
-        List<Book> bookListByAuthor = proxyLibraryService.findBookByAuthor(name);
+        List<Book> bookListByAuthor = libraryService.findBookByAuthor(name);
         viewService.showResultFindByAuthor(bookListByAuthor);
     }
 

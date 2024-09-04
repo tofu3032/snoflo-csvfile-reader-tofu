@@ -6,20 +6,22 @@ import java.util.stream.Collectors;
 import org.snoflo.csv.LibraryCsvFileManager;
 import org.snoflo.csv.LibraryDataConverter;
 import org.snoflo.model.Book;
+import org.snoflo.proxy.LibraryServiceProxy;
 
 public class LibraryServiceImpl implements LibraryService {
 
     private LibraryDataConverter libraryDataConverter;
-    private static LibraryServiceImpl instance;
+    private static LibraryService instance;
 
     private LibraryServiceImpl() {
         this.libraryDataConverter = new LibraryDataConverter(new LibraryCsvFileManager("library.csv", 100));
     }
 
-    public static synchronized LibraryServiceImpl getInstance() {
+    public static synchronized LibraryService getInstance() {
         if (instance == null) {
-            instance = new LibraryServiceImpl();
-        }
+            // instance = new LibraryServiceImpl();
+            instance = (LibraryService) LibraryServiceProxy.newProxyInstance(new LibraryServiceImpl() );
+        } 
         return instance;
     }
 
