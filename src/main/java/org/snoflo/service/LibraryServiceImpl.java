@@ -11,24 +11,13 @@ import org.snoflo.model.Book;
 public class LibraryServiceImpl implements LibraryService {
 
     private LibraryDataConverter libraryDataConverter;
-    private static LibraryService instance;
 
     private LibraryDto libraryDto;
 
     public LibraryServiceImpl(LibraryDto libraryDto) {
-        // this.libraryDto = new LibraryDto("library.csv", 100);
         this.libraryDto = libraryDto;
         this.libraryDataConverter = new LibraryDataConverter(new LibraryCsvFileManager(libraryDto.getNameOfCsvFile(), libraryDto.getRowOfCsvFile()));
     }
-
-  /*   public static synchronized LibraryService getInstance() {
-        if (instance == null) {
-            // instance = new LibraryServiceImpl();
-            instance = (LibraryService) LibraryServiceProxy.newProxyInstance(new LibraryServiceImpl());
-        } 
-        return instance;
-    } */
-
 
     public List<Book> findBookByAuthor(String author) {
         List<Book> bookList = libraryDataConverter.getBookList();

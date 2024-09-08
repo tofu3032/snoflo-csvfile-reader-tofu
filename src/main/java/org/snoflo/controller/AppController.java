@@ -33,16 +33,22 @@ public class AppController {
         int number = Integer.parseInt(scanner.nextLine());
 
         switch (number) {
-            case 1:
-                executeGenerateCsvFile();
-                break;
-            case 2:
-                executeFindByAuthor();
-                break;
-
-            default:
-                break;
+            case 1 -> executeGenerateCsvFile();
+            case 2 -> executeFindByAuthor();
+            default -> executeMainMenu();
         }
+        // switch (number) {
+        //     case 1:
+        //         executeGenerateCsvFile();
+        //         break;
+        //     case 2:
+        //         executeFindByAuthor();
+        //         break;
+        //     default:
+        //         executeMainMenu();
+        // }
+
+
     }
 
     public void executeGenerateCsvFile() {

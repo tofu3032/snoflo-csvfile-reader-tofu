@@ -1,14 +1,10 @@
 package org.snoflo.csv;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.snoflo.model.Book;
-import org.snoflo.utils.CsvFilePathProvider;
 
 public class LibraryDataConverter {
 
@@ -27,20 +23,21 @@ public class LibraryDataConverter {
     }
 
     private void generateData() throws IOException {
-        Path path = Paths.get(CsvFilePathProvider.getCsvFilePath("library.csv"));
-        if (Files.notExists(path)) {
-            csvFileManager.generateCsvFile();
-        } else {
-            csvFileManager.generateCsvFile();
-        }
-
+        // Path path = Paths.get(CsvFilePathProvider.getCsvFilePath("library.csv"));
+        // if (Files.notExists(path)) {
+        // csvFileManager.generateCsvFile();
+        // }
+        csvFileManager.generateCsvFile();
     }
 
     private void convertData() throws IOException {
-        if (bookList == null) {
-            this.data = csvFileManager.readCsvFile();
-            this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
-        }
+        // if (bookList == null) {
+        //     this.data = csvFileManager.readCsvFile();
+        //     this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
+        // }
+        this.data = csvFileManager.readCsvFile();
+        this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
+
     }
 
     private Book createBookFromRow(String[] row) {

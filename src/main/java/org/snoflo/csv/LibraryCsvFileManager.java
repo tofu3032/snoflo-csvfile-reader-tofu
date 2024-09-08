@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.snoflo.dto.LibraryDto;
-
 public class LibraryCsvFileManager extends AbstractCsvFileManager {
 
     public LibraryCsvFileManager(String csvFile, int row) {
