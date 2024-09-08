@@ -6,6 +6,9 @@ public class LibraryDto {
 
     private int rowOfCsvFile;
 
+    public LibraryDto() {
+    }
+
     public LibraryDto(String nameOfCsvFile, int rowOfCsvFile) {
         this.nameOfCsvFile = nameOfCsvFile;
         this.rowOfCsvFile = rowOfCsvFile;

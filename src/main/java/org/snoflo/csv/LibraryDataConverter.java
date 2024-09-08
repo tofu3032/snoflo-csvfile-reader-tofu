@@ -30,6 +30,8 @@ public class LibraryDataConverter {
         Path path = Paths.get(CsvFilePathProvider.getCsvFilePath("library.csv"));
         if (Files.notExists(path)) {
             csvFileManager.generateCsvFile();
+        } else {
+            csvFileManager.generateCsvFile();
         }
 
     }

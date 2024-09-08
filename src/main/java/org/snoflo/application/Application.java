@@ -7,13 +7,13 @@ public class Application {
     private AppController appController;
     private static Application instance;
 
-    private Application() {
-        this.appController = new AppController();
+    private Application(AppController appController) {
+        this.appController = appController;
     }
 
-    public static synchronized Application getInstance() {
+    public static synchronized Application getInstance(AppController appController) {
         if (instance == null) {
-            instance = new Application();
+            instance = new Application(appController);
         }
         return instance;
     }

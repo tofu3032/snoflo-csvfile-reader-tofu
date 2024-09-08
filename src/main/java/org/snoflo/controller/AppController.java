@@ -11,7 +11,7 @@ import org.snoflo.service.LibraryServiceImpl;
 import org.snoflo.service.ViewService;
 
 public class AppController {
-    
+
     private ViewService viewService;
 
     private LibraryService libraryService;
@@ -19,30 +19,50 @@ public class AppController {
     private LibraryDto libraryDto;
     private Scanner scanner;
 
-    public AppController () {
+    public AppController() {
         this.viewService = new ViewService();
-        // this.libraryService = LibraryServiceImpl.getInstance();
-        this.libraryService = (LibraryService) LibraryServiceProxy.newProxyInstance(new LibraryServiceImpl(libraryDto));
+        // this.libraryService = (LibraryService) LibraryServiceProxy
+        //         .newProxyInstance(new LibraryServiceImpl(new LibraryDto()));
         this.scanner = new Scanner(System.in);
     }
 
-    public void executeMainMenu () {
-        viewService.showMainDisplay();
-        viewService.showSelectDisplay();
-        int number = scanner.nextInt();
+    public void executeMainMenu() {
+        viewService.showPromptMainMenu();
+        viewService.showSelectMenu();
+        // int number = scanner.nextInt();
+        int number = Integer.parseInt(scanner.nextLine());
 
-        if (number == 1) {
-            executeFindByAuthor();
+        switch (number) {
+            case 1:
+                executeGenerateCsvFile();
+                break;
+            case 2:
+                executeFindByAuthor();
+                break;
+
+            default:
+                break;
         }
     }
 
+    public void executeGenerateCsvFile() {
+        viewService.showPromptGenerateCsvFile();
+        viewService.showPromptWriteCsvFileName();
+        String csvFile = scanner.nextLine();
+        viewService.showPromptWriteCsvFileRow();
+        int row = Integer.parseInt(scanner.nextLine());
+
+        libraryDto = new LibraryDto(csvFile, row);
+        libraryService = (LibraryService) LibraryServiceProxy.newProxyInstance(new LibraryServiceImpl(libraryDto));
+        viewService.showResultGenerateCsvFile();
+        executeMainMenu();
+    }
+
     public void executeFindByAuthor() {
-        viewService.showMenuFindByAuthor();
-        scanner.nextLine();
+        viewService.showPromptFindByAuthor();
         String name = scanner.nextLine();
         List<Book> bookListByAuthor = libraryService.findBookByAuthor(name);
         viewService.showResultFindByAuthor(bookListByAuthor);
     }
-
 
 }

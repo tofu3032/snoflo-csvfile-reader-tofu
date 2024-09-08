@@ -7,7 +7,6 @@ import org.snoflo.csv.LibraryCsvFileManager;
 import org.snoflo.csv.LibraryDataConverter;
 import org.snoflo.dto.LibraryDto;
 import org.snoflo.model.Book;
-import org.snoflo.proxy.LibraryServiceProxy;
 
 public class LibraryServiceImpl implements LibraryService {
 
@@ -15,9 +14,10 @@ public class LibraryServiceImpl implements LibraryService {
     private static LibraryService instance;
 
     private LibraryDto libraryDto;
-    
+
     public LibraryServiceImpl(LibraryDto libraryDto) {
-        this.libraryDto = new LibraryDto("library.csv", 100);
+        // this.libraryDto = new LibraryDto("library.csv", 100);
+        this.libraryDto = libraryDto;
         this.libraryDataConverter = new LibraryDataConverter(new LibraryCsvFileManager(libraryDto.getNameOfCsvFile(), libraryDto.getRowOfCsvFile()));
     }
 
