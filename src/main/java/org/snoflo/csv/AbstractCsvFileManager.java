@@ -26,17 +26,4 @@ public abstract class AbstractCsvFileManager {
 
     abstract public void writeCsvFile(List<String[]> data) throws IOException;
 
-    public void setCsvFile(String csvFile) {
-        this.csvFile = csvFile;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
-    }
-
-    public void setRandom(Random random) {
-        this.random = random;
-    }
-
-    
 }

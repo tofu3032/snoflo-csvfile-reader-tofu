@@ -1,25 +1,30 @@
 package org.snoflo.dto;
 
 public class LibraryDto {
-   
-    private String csvFile;
 
-    private int row;
+    private String nameOfCsvFile;
 
-    public String getCsvFile() {
-        return csvFile;
+    private int rowOfCsvFile;
+
+    public LibraryDto(String nameOfCsvFile, int rowOfCsvFile) {
+        this.nameOfCsvFile = nameOfCsvFile;
+        this.rowOfCsvFile = rowOfCsvFile;
     }
 
-    public void setCsvFile(String csvFile) {
-        this.csvFile = csvFile;
+    public String getNameOfCsvFile() {
+        return nameOfCsvFile;
     }
 
-    public int getRow() {
-        return row;
+    public void setNameOfCsvFile(String nameOfCsvFile) {
+        this.nameOfCsvFile = nameOfCsvFile;
     }
 
-    public void setRow(int row) {
-        this.row = row;
+    public int getRowOfCsvFile() {
+        return rowOfCsvFile;
+    }
+
+    public void setRowOfCsvFile(int rowOfCsvFile) {
+        this.rowOfCsvFile = rowOfCsvFile;
     }
 
 }

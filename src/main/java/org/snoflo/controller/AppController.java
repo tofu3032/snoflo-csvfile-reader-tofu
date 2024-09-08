@@ -3,6 +3,7 @@ package org.snoflo.controller;
 import java.util.List;
 import java.util.Scanner;
 
+import org.snoflo.dto.LibraryDto;
 import org.snoflo.model.Book;
 import org.snoflo.proxy.LibraryServiceProxy;
 import org.snoflo.service.LibraryService;
@@ -15,11 +16,13 @@ public class AppController {
 
     private LibraryService libraryService;
 
+    private LibraryDto libraryDto;
     private Scanner scanner;
 
     public AppController () {
         this.viewService = new ViewService();
-        this.libraryService = LibraryServiceImpl.getInstance();
+        // this.libraryService = LibraryServiceImpl.getInstance();
+        this.libraryService = (LibraryService) LibraryServiceProxy.newProxyInstance(new LibraryServiceImpl(libraryDto));
         this.scanner = new Scanner(System.in);
     }
 
