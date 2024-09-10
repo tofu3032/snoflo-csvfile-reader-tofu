@@ -6,6 +6,7 @@ practice/
 .idea/
 library-management.iml
 out/
+.class
 # Ignore Gradle project-specific cache directory
 .gradle
 .csv
