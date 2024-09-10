@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.snoflo.dto.CsvFileDto;
 import org.snoflo.model.Question;
-import org.snoflo.repository.CsvFileReader;
-import org.snoflo.repository.CsvFileReaderImpl;
 import org.snoflo.repository.DataConverter;
+import org.snoflo.repository.QuestionDataConverter;
+import org.snoflo.repository.QuestionCsvFileReader;
 
 public class QuestionService implements CsvFileService<Question>{
 
@@ -14,7 +14,7 @@ public class QuestionService implements CsvFileService<Question>{
     private CsvFileDto csvFileDto;
     
     public QuestionService (CsvFileDto csvFileDto) {
-        this.dataConverter = new QuestionDataConverter(new CsvFileReaderImpl(), csvFileDto);
+        this.dataConverter = new QuestionDataConverter(new QuestionCsvFileReader(), csvFileDto);
         this.csvFileDto = csvFileDto;
     }
 

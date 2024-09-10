@@ -1,16 +1,7 @@
 package org.snoflo.dto;
 
-public class CsvFileDto {
-   
-    private String csvFile;
-
-	public String getCsvFile() {
-		return csvFile;
-	}
-
-	public void setCsvFile(String csvFile) {
-		this.csvFile = csvFile;
-	}
-
-    
+public record CsvFileDto(String csvFile) {
 }
+
+// record 적용
+// csvFile은 고정이기 때문에 불변 객체  

@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface DataConverter<T> {
 
-    <T> List<T> convertData() throws IOException; 
+    List<T> convertData() throws IOException; 
 
-    <T> T createDomainFromRow (String[] row); 
+    T createDomainFromRow (String[] row); 
 
     List<T> getData();
 }
