@@ -22,7 +22,7 @@ public class AppController {
     public AppController() {
         this.viewService = new ViewService();
         // this.libraryService = (LibraryService) LibraryServiceProxy
-        //         .newProxyInstance(new LibraryServiceImpl(new LibraryDto()));
+        // .newProxyInstance(new LibraryServiceImpl(new LibraryDto()));
         this.scanner = new Scanner(System.in);
     }
 
@@ -37,17 +37,6 @@ public class AppController {
             case 2 -> executeFindByAuthor();
             default -> executeMainMenu();
         }
-        // switch (number) {
-        //     case 1:
-        //         executeGenerateCsvFile();
-        //         break;
-        //     case 2:
-        //         executeFindByAuthor();
-        //         break;
-        //     default:
-        //         executeMainMenu();
-        // }
-
 
     }
 
