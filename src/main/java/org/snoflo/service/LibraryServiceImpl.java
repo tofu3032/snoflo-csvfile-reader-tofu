@@ -3,10 +3,10 @@ package org.snoflo.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.snoflo.csv.LibraryCsvFileManager;
-import org.snoflo.csv.LibraryDataConverter;
 import org.snoflo.dto.LibraryDto;
 import org.snoflo.model.Book;
+import org.snoflo.repository.LibraryCsvFileManager;
+import org.snoflo.repository.LibraryDataConverter;
 
 public class LibraryServiceImpl implements LibraryService {
 

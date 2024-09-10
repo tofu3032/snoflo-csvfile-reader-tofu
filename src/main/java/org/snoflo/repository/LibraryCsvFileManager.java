@@ -1,4 +1,4 @@
-package org.snoflo.csv;
+package org.snoflo.repository;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -39,6 +39,10 @@ public class LibraryCsvFileManager extends AbstractCsvFileManager {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
+
+                for (String value : values) {
+                    System.out.println("value " + value);
+                }
                 data.add(values);
             }
         }
@@ -71,4 +75,10 @@ public class LibraryCsvFileManager extends AbstractCsvFileManager {
         return firstName + " " + lastName;
     }
 
+	@Override
+	public String toString() {
+		return "LibraryCsvFileManager []";
+	}
+
+    
 }

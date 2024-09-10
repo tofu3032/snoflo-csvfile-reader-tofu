@@ -1,4 +1,4 @@
-package org.snoflo.csv;
+package org.snoflo.repository;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.snoflo.csv;
+package org.snoflo.repository;
 
 import java.io.IOException;
 import java.util.List;
@@ -37,7 +37,6 @@ public class LibraryDataConverter {
         // }
         this.data = csvFileManager.readCsvFile();
         this.bookList = data.stream().skip(1).map(row -> createBookFromRow(row)).collect(Collectors.toList());
-
     }
 
     private Book createBookFromRow(String[] row) {
