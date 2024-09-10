@@ -1,4 +1,5 @@
 src/library.csv
+resources/csv/*.csv
 !src/csv
 memo/
 practice/
