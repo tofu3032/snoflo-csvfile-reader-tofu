@@ -8,6 +8,6 @@ library-management.iml
 out/
 # Ignore Gradle project-specific cache directory
 .gradle
-
+.csv
 # Ignore Gradle build output directory
 # build
